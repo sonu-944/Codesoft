@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+header {
+    background: #413e3e;
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 1rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    transition: color 0.4s ease;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #ff9671;
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.nav-links a:hover::before {
+    left: 0;
+}
+
+.nav-links a:hover {
+    color: #333;
+}
+
+.hero {
+    background: url('./b4.avif') no-repeat center center/cover;
+    color: #000000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    margin-top: 60px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #000000, #000000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 0rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #000000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.25rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #ff6f61;
+}
+
+.features {
+    background: linear-gradient(to right,#ccc, #ccc);
+    color: #000000;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.features div {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.features div div {
+    flex: 1;
+    margin: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.features div div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.features i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section {
+    padding: 40px;
+    margin: 4rem 0;
+}
+
+/* Enhanced Section Titles */
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 60%;
+    height: 4px;
+    background-color: #000000;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* About Us Section Enhancements */
+.about, .services, .contact {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.about img, .services img, .contact img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.about img {
+    border-radius: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.about p, .services p, .contact p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    padding: 1rem;
+    background: #f4f4f4;
+    border-left: 4px solid #ff9671;
+    border-radius: 0 5px 5px 0;
+    text-align: justify;
+}
+
+.services img {
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.services img:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.services p {
+    margin-top: 1rem;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.services p:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Contact Us Section Enhancements */
+.contact img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.contact img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+.contact p {
+    margin-top: 1rem;
+    background: #f4f4f4;
+    border-left: 4px solid #ff9671;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Section Container Enhancements */
+.about div, .services div, .contact div {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    transition: background 0.3s ease;
+}
+
+.about div:hover, .services div:hover, .contact div:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.about, .services, .contact {
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .features div {
+        flex-direction: column;
+    }
+
+    .about, .services, .contact {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about img, .services img, .contact img {
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Form container styling */
+.form-container {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form field styling */
+.contact-form div {
+    margin-bottom: 15px;
+}
+
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+/* Button styling */
+.contact-form button {
+    background-color: #000000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* Our Services Section Enhancements */
+.services img {
+    border-radius: 0; /* Remove rounded corners */
+    transition: transform 0.3s ease;
+    width: 100%; /* Ensure the image takes the full width of its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.services img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.services p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    margin-top: 1rem;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease;
+}
+
+.services p:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background: #000000; /* Matches header background */
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    bottom: 0;
+    position: relative;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.footer-social {
+    margin-top: 1rem;
+}
+
+.footer-social a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 0.5rem;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    color: #ff9671; /* Button color for consistency */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        padding: 0 1rem;
+    }
+
+    .footer-content p {
+        font-size: 0.875rem;
+    }
+
+    .footer-social {
+        margin-top: 0.5rem;
+    }
+
+    .footer-social a {
+        font-size: 1.25rem;
+        margin: 0 0.3rem;
+    }
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .calculator {
+            background: #222;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .display {
+            background: #444;
+            color: #fff;
+            font-size: 2em;
+            text-align: right;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .key {
+            background: #555;
+            color: #fff;
+            border: none;
+            font-size: 1.5em;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            outline: none;
+            transition: background 0.2s;
+        }
+        .key:hover {
+            background: #666;
+        }
+        .key.clear {
+            background: #ff3b30;
+        }
+        .key.operator {
+            background: #ff9500;
+        }
+        .key.operator:hover {
+            background: #e68a00;
+        }
+        .key.equal {
+            background: #00cc00;
+            grid-row: span 2;
+        }
+        .key.equal:hover {
+            background: #009900;
+        }
+        .key.clear:hover {
+            background: #e62e26;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" class="display" id="result" readonly aria-label="Calculator Display">
+        <div class="keys">
+            <button class="key clear" onclick="clr()" aria-label="Clear" tabindex="0">C</button>
+            <button class="key operator" onclick="dis('/')" aria-label="Divide" tabindex="0">/</button>
+            <button class="key operator" onclick="del()" aria-label="Delete" tabindex="0">DEL</button>
+            <button class="key operator" onclick="dis('*')" aria-label="Multiply" tabindex="0">*</button>
+            <button class="key" onclick="dis('7')" aria-label="7" tabindex="0">7</button>
+            <button class="key" onclick="dis('8')" aria-label="8" tabindex="0">8</button>
+            <button class="key" onclick="dis('9')" aria-label="9" tabindex="0">9</button>
+            <button class="key operator" onclick="dis('-')" aria-label="Subtract" tabindex="0">-</button>
+            <button class="key" onclick="dis('4')" aria-label="4" tabindex="0">4</button>
+            <button class="key" onclick="dis('5')" aria-label="5" tabindex="0">5</button>
+            <button class="key" onclick="dis('6')" aria-label="6" tabindex="0">6</button>
+            <button class="key operator" onclick="dis('+')" aria-label="Add" tabindex="0">+</button>
+            <button class="key" onclick="dis('1')" aria-label="1" tabindex="0">1</button>
+            <button class="key" onclick="dis('2')" aria-label="2" tabindex="0">2</button>
+            <button class="key" onclick="dis('3')" aria-label="3" tabindex="0">3</button>
+            <button class="key equal" onclick="solve()" aria-label="Equals" tabindex="0">=</button>
+            <button class="key" onclick="dis('%')" aria-label="Percentage" tabindex="0">%</button>
+            <button class="key" onclick="dis('0')" aria-label="0" tabindex="0">0</button>
+            <button class="key" onclick="dis('.')" aria-label="Decimal" tabindex="0">.</button>
+        </div>
+    </div>
+
+    <script>
+        function dis(val) {
+            document.getElementById("result").value += val;
+        }
+
+        function solve() {
+            try {
+                let expression = document.getElementById("result").value;
+                // Handle modulo operation separately
+                if (expression.includes('%')) {
+                    let numbers = expression.split('%');
+                    if (numbers.length === 2) {
+                        let result = (parseFloat(numbers[0]) * (parseFloat(numbers[1]) / 100));
+                        document.getElementById("result").value = result;
+                    } else {
+                        document.getElementById("result").value = "Error";
+                    }
+                } else {
+                    document.getElementById("result").value = eval(expression);
+                }
+            } catch (e) {
+                document.getElementById("result").value = "Error";
+            }
+        }
+
+        function clr() {
+            document.getElementById("result").value = "";
+        }
+
+        function del() {
+            var result = document.getElementById("result").value;
+            document.getElementById("result").value = result.slice(0, -1);
+        }
+
+        // Add keyboard support
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if ((key >= '0' && key <= '9') || key === '.' || key === '+' || key === '-' || key === '*' || key === '/' || key === '%') {
+                dis(key);
+            } else if (key === 'Enter') {
+                event.preventDefault();
+                solve();
+            } else if (key === 'Backspace') {
+                del();
+            } else if (key === 'Escape') {
+                clr();
+            }
+        });
+    </script>
+</body>
+</html>
